@@ -29,10 +29,22 @@ public sealed class AppDbContext : DbContext
         base.OnModelCreating(modelBuilder);
 
         ConfigureBaseModelConventions(modelBuilder);
+        ConfigureInventoryBalance(modelBuilder);
+        ConfigureInventoryMovementLine(modelBuilder);
         ConfigureStockLedgerExportLog(modelBuilder);
         ModelConfig.Apply(modelBuilder);
     }
-
+    private static void ConfigureInventoryBalance(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<InventoryBalance>()
+            .HasIndex(x => new { x.WarehouseId, x.ProductId })
+            .IsUnique();
+    }
+    private static void ConfigureInventoryMovementLine(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<InventoryMovementLine>()
+            .HasIndex(x => x.InventoryMovementId);
+    }
     private static void ConfigureBaseModelConventions(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplySoftDeleteQueryFilter();
