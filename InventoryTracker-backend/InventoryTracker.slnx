@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/InventoryTracker.Api/InventoryTracker.Api.csproj" />
+    <Project Path="src/InventoryTracker.Domain/InventoryTracker.Domain.csproj" />
+    <Project Path="src/InventoryTracker.Infrastructure/InventoryTracker.Infrastructure.csproj" />
+    <Project Path="src/InventoryTracker.Integration/InventoryTracker.Integration.csproj" />
+  </Folder>
+</Solution>
